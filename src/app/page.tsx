@@ -9,13 +9,13 @@ import LetsTalkSection from "../components/sections/LetsTalkSection";
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <TransparencySection />
-      <ProcessSection />
-      <WhyChooseUsSection />
-      <LetsTalkSection />
+      <section id="hero"><HeroSection /></section>
+      <section id="about"><AboutSection /></section>
+      <section id="services"><ServicesSection /></section>
+      <section id="transparency"><TransparencySection /></section>
+      <section id="process"><ProcessSection /></section>
+      <section id="whychooseus"><WhyChooseUsSection /></section>
+      <section id="letstalk"><LetsTalkSection /></section>
     </>
   );
 }

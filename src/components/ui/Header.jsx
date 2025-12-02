@@ -1,48 +1,48 @@
-import React from 'react';
-import Image from 'next/image';
-import logo from '../../../public/Logo.svg';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import logo from "../../../public/Logo.svg";
 
 const navLinks = [
-  { label: 'About Us', href: '#' },
-  { label: 'Services', href: '#' },
-  { label: 'Process', href: '#' },
-  { label: 'Why Choose Us', href: '#' },
-  { label: 'Get in Touch', href: '#' },
+  { label: "About Us", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Process", href: "#process" },
+  { label: "Why Choose Us", href: "#whychooseus" },
+  { label: "Get in Touch", href: "#letstalk" },
 ];
 
 export default function Header() {
   return (
-    <header className="bg-[#0a0f0a] px-8 py-4 flex items-center justify-between rounded-2xl m-4 shadow-lg">
-      
-      {/* Logo Section */}
-      <div className="flex items-center gap-3">
-        <Image
-          src={logo}
-          alt="Aloqa AI Logo"
-          width={150}
-          height={100}
-          className="rounded-md"
-          priority
-        />
-      </div>
+    <motion.header
+      initial={{ opacity: 0, y: -25 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+      className="bg-[#0a0f0a] px-8 py-4 flex items-center justify-between rounded-2xl m-4 shadow-lg sticky top-0 z-50"
+    >
+      <a href="#hero" className="flex items-center gap-3 cursor-pointer">
+        <Image src={logo} alt="Logo" width={150} height={100} priority />
+      </a>
 
-      {/* Navigation Links */}
       <nav className="flex gap-8">
-        {navLinks.map(link => (
-          <a
+        {navLinks.map((link, idx) => (
+          <motion.a
             key={link.label}
             href={link.href}
-            className="text-[#D9F5DEB2] no-underline text-base font-Outfit hover:text-[#7fff4f] transition-colors duration-200"
+            whileHover={{ scale: 1.1 }}
+            className="text-[#D9F5DEB2] no-underline text-base hover:text-[#7fff4f] transition-colors"
           >
             {link.label}
-          </a>
+          </motion.a>
         ))}
       </nav>
 
-      {/* Button */}
-      <button className="bg-[#5DD149] text-[#0a0f0a] border-none rounded-lg px-6 py-2 font-bold text-base cursor-pointer shadow-md">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        className="bg-[#5DD149] text-[#0a0f0a] px-6 py-2 font-bold rounded-lg shadow-md"
+      >
         Let's Talk
-      </button>
-    </header>
+      </motion.button>
+    </motion.header>
   );
 }
