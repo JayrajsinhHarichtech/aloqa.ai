@@ -11,7 +11,7 @@ export function getServiceTitle() {
 export const servicesData = {
   title: "Our Services",
   description:
-    "AgentX empowers you with features that set it apart from traditional cryptocurrency. Revolutionary technology meets unmatched security.",
+    "Our services are built to simplify every customer conversation. From calls to actions, everything works seamlessly in the background.",
   cards: [
     {
       icon: services.smart,
@@ -42,6 +42,12 @@ export const servicesData = {
       title: "24/7 CALL SUPPORT",
       description:
         "Always-on assistance ensures no customer query goes unanswered, regardless of time zone or support needs.",
+    },
+    {
+      icon: services.voiceCustomization,
+      title: "Voice Customization",
+      description:
+        "Personalize AI voice tone, accent, and speaking style to perfectly match your brand identity and customer preferences.",
     },
   ],
 };

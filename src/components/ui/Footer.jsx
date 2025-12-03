@@ -6,12 +6,15 @@ import logo from "../../../public/Footer.svg";
 import tawwiterIcon from "../../../public/footersvg/1.svg";
 import telegramIcon from "../../../public/footersvg/2.svg";
 import mediumIcon from "../../../public/footersvg/3.svg";
+import { useMouseAnimation } from "../../hooks/useMouseAnimation";
+import { MouseAnimationBackground } from "../common/MouseAnimationBackground";
 
 const quickLinks = [
-  { label: "Home", href: "#" },
-  { label: "Features", href: "#" },
-  { label: "Tokenomics", href: "#" },
-  { label: "How to Buy", href: "#" },
+  { label: "Services", href: "#" },
+  { label: "User Cases", href: "#" },
+  { label: "Process", href: "#" },
+  { label: "Why Choose Us", href: "#" },
+   { label: "Demo Call", href: "#" },
 ];
 
 const communityLinks = [
@@ -21,18 +24,27 @@ const communityLinks = [
 ];
 
 export default function Footer() {
+  const { mousePosition, isMouseInSection, springX, springY } = useMouseAnimation('footer-section');
+
   return (
     <motion.footer
+      id="footer-section"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="bg-[#0a0f0a] text-[#e0ffe0] p-10 rounded-2xl m-4 shadow-lg"
+      className="bg-[#0a0f0a] text-[#e0ffe0] p-10 rounded-2xl m-4 shadow-lg relative overflow-hidden"
     >
-      <div className="grid grid-cols-3 gap-12 mb-10">
+      <MouseAnimationBackground 
+        mousePosition={mousePosition}
+        isMouseInSection={isMouseInSection}
+        springX={springX}
+        springY={springY}
+      />
+      <div className="grid grid-cols-3 gap-12 mb-10 relative z-10">
 
         <div className="flex flex-col gap-3">
-          <Image src={logo} alt="Logo" width={360} height={48} />
-          <p className="text-[14px] text-[#D9F5DE99]">
+          <Image src={logo} alt="Logo" width={200} height={48} />
+          <p className="text-[14px] text-[#D9F5DE99] font-['Outfit']">
             Revolutionary AI-powered cryptocurrency built on Solana.
              <br />Join the future of decentralized finance.
           </p>
@@ -43,7 +55,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h3 className="font-bold mb-3 text-[#D9F5DE]">QUICK LINKS</h3>
+          <h3 className="font-bold mb-3 text-[#D9F5DE] font-['Outfit']">Navigation</h3>
 
           <ul className="space-y-1">
             {quickLinks.map((link, idx) => (
@@ -53,7 +65,7 @@ export default function Footer() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
               >
-                <a className="text-[#D9F5DE99] hover:text-[#7fff4f]">
+                <a className="text-[#D9F5DE99] hover:text-[#7fff4f] font-['Outfit']">
                   {link.label}
                 </a>
               </motion.li>
@@ -62,7 +74,7 @@ export default function Footer() {
         </motion.div>
 
         <div>
-          <h3 className="font-bold mb-3 text-[#D9F5DE]">COMMUNITY</h3>
+          <h3 className="font-bold mb-3 text-[#D9F5DE] font-['Outfit']">COMMUNITY</h3>
 
           <div className="flex gap-4 mb-3">
             {communityLinks.map((link, idx) => (
@@ -77,7 +89,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <p className="text-[13px] text-[#D9F5DE66]">
+          <p className="text-[13px] text-[#D9F5DE66] font-['Outfit']">
             Join our community of 50,000+ members
           </p>
         </div>
@@ -89,12 +101,12 @@ export default function Footer() {
         transition={{ duration: 0.8 }}
         className="flex justify-between items-center border-t border-[#D9F5DE33] pt-4 text-[13px] text-[#D9F5DE66]"
       >
-        <span>© 2024 Aloqa AI. All Rights Reserved.</span>
+        <span className="font-['Outfit']">© 2024 Aloqa AI. All Rights Reserved.</span>
 
         <div className="flex gap-6">
-          <a className="hover:text-[#7fff4f]">Privacy Policy</a>
-          <a className="hover:text-[#7fff4f]">Terms of Service</a>
-          <a className="hover:text-[#7fff4f]">Disclaimer</a>
+          <a className="hover:text-[#7fff4f] font-['Outfit']">Privacy Policy</a>
+          <a className="hover:text-[#7fff4f] font-['Outfit']">Terms of Service</a>
+          <a className="hover:text-[#7fff4f] font-['Outfit']">Disclaimer</a>
         </div>
       </motion.div>
     </motion.footer>

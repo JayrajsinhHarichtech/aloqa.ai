@@ -1,7 +1,6 @@
 export const processData = {
-  badge: 'GETTING STARTED',
   description:
-    'Follow these simple steps to join the revolution. Get started in minutes with our easy-to-follow guide.',
+    'Start your AI calling journey in a few straightforward steps. We make the entire setup smooth, fast, and stress-free.',
   steps: [
     {
       number: '01',
@@ -37,6 +36,13 @@ export const processData = {
       title: 'Evolve',
       description:
         'Once live, we refine everything. We monitor performance, improve responses, add new capabilities, and scale as your business grows. Your AI keeps getting smarter every day.',
+    },
+    {
+      number: '06',
+      icon: 'scale',
+      title: 'Scale',
+      description:
+        'As your business grows, your AI grows with it. We expand capacity, add new use cases, integrate additional channels, and handle increasing call volumes seamlessly without missing a beat.',
     },
   ],
 };

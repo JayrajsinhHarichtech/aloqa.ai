@@ -3,20 +3,24 @@ import React from "react";
 import { motion } from "framer-motion";
 import { processData } from "../../Data/processData";
 import { processImages } from "../../Helper/processHelper";
+import { useMouseAnimation } from "../../hooks/useMouseAnimation";
+import { MouseAnimationBackground } from "../common/MouseAnimationBackground";
 
 export default function ProcessSection() {
-  return (
-    <section className="bg-[#0a0f0a] text-[#e0ffe0] py-16 px-4 flex flex-col items-center">
+  const { mousePosition, isMouseInSection, springX, springY } =
+    useMouseAnimation("process-section");
 
-      <motion.span
-        initial={{ opacity: 0, scale: 0.7 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="inline-block bg-[#1a2e1a] text-[#7fff4f] px-4 py-1 rounded-full text-xs font-semibold mb-4"
-      >
-        {processData.badge}
-      </motion.span>
+  return (
+    <section
+      id="process-section"
+      className="bg-[#0a0f0a] text-[#e0ffe0] py-16 px-4 flex flex-col items-center relative overflow-hidden"
+    >
+      <MouseAnimationBackground
+        mousePosition={mousePosition}
+        isMouseInSection={isMouseInSection}
+        springX={springX}
+        springY={springY}
+      />
 
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
@@ -25,7 +29,7 @@ export default function ProcessSection() {
         viewport={{ once: true }}
         className="text-4xl font-bold mb-2 text-center"
       >
-        How <span className="text-[#D9F5DE]">We Work</span>
+        How We <span className="text-[#5DD149]">Work</span>
       </motion.h2>
 
       <p className="max-w-2xl text-center mb-8 text-base md:text-lg text-[#D9F5DE99]">
@@ -43,10 +47,17 @@ export default function ProcessSection() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.7 }}
               viewport={{ once: true }}
-              className="bg-[#111] border border-[#1a2e1a] rounded-xl p-6 flex flex-col gap-2 relative"
+              whileHover={{
+                scale: 1.06,
+                boxShadow: "0 0 25px rgba(125,255,79,0.25)",
+                borderColor: "rgba(125,255,79,0.8)",
+                backgroundColor: "rgba(10,20,10,0.9)",
+              }}
+              className="bg-[#111] border border-[#1a2e1a] rounded-xl p-6 
+                         flex flex-col gap-3 transition-all duration-300 ease-out"
             >
-              <div className="flex items-center gap-4 mb-2">
-
+              {/* ICON + NUMBER */}
+              <div className="flex items-center gap-4 mb-2 relative">
                 <motion.img
                   initial={{ opacity: 0, scale: 0.6 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -66,10 +77,30 @@ export default function ProcessSection() {
                 </motion.span>
               </div>
 
-              <div className="font-bold text-lg text-[#D9F5DE]">{step.title}</div>
-              <div className="text-sm text-[#D9F5DE99]">{step.description}</div>
+              {/* TITLE */}
+              <div className="font-bold text-lg text-[#D9F5DE]">
+                {step.title}
+              </div>
 
-              <div className="h-1 w-full bg-[#7fff4f] rounded-full mt-4 opacity-30"></div>
+              {/* DESCRIPTION */}
+              <div className="text-sm text-[#D9F5DE99]">
+                {step.description}
+              </div>
+
+              {/* ANIMATED LINES */}
+              <div
+                className={`h-1 rounded-full mt-4 opacity-30 bg-[#7fff4f] 
+                  ${
+                    idx === 0 ? "w-full" :
+                    idx === 1 ? "w-[50%]" :
+                    idx === 2 ? "w-[30%]" :
+                    idx === 3 ? "w-[20%]" :
+                    idx === 4 ? "w-[10%]" :
+                    idx === 5 ? "w-[10%]" :
+                    "w-full"
+                  }
+                `}
+              />
             </motion.div>
           );
         })}

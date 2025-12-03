@@ -11,8 +11,9 @@ export default function Home() {
     <>
       <section id="hero"><HeroSection /></section>
       <section id="about"><AboutSection /></section>
-      <section id="services"><ServicesSection /></section>
       <section id="transparency"><TransparencySection /></section>
+      <section id="services"><ServicesSection /></section>
+      
       <section id="process"><ProcessSection /></section>
       <section id="whychooseus"><WhyChooseUsSection /></section>
       <section id="letstalk"><LetsTalkSection /></section>
